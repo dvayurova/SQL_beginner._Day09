@@ -9,7 +9,7 @@ CREATE TABLE person_audit (
 );
 
 
---перед тем как добавить триггер нужно создать функцию 
+
 CREATE FUNCTION fnc_trg_person_insert_audit () RETURNS TRIGGER 
 AS $$
     BEGIN
@@ -18,7 +18,7 @@ AS $$
     END;
 $$ LANGUAGE plpgsql;
 
-CREATE TRIGGER trg_person_insert_audit AFTER INSERT ON person -- триггер
+CREATE TRIGGER trg_person_insert_audit AFTER INSERT ON person 
 FOR EACH ROW EXECUTE PROCEDURE fnc_trg_person_insert_audit();
 
 INSERT INTO person(id, name, age, gender, address) 
